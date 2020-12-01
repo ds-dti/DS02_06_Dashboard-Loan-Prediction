@@ -24,7 +24,6 @@ def main():
             * Menu Eksplorasi untuk melakukan eksplorasi terhadap data Anda
             * Menu Prediksi untuk melakukan prediksi terhadap data Anda
         """)
-        data = st.file_uploader("Upload File CSV", type=["csv"])
     
     # EKSPLORASI
     elif choice == "Eksplorasi":
@@ -43,27 +42,67 @@ def main():
             df = pd.read_csv(data_file)
             st.dataframe(df)
 
+            st.write("========================================================================")
+
+            st.title("Eksplorasi Data Kategorikal")
             categorical_option = st.selectbox('Choose categorical column:', df.columns)
             # st.write(df[categorical_option].value_counts())
             st.write(df[categorical_option].dtypes)
-            if df[categorical_option].dtypes == 'object':
-                st.write(df[categorical_option].value_counts())
-                st.title("Pairplot")
-                fig = sns.pairplot(df, hue=categorical_option)
-                st.pyplot(fig)
+            if st.button("Lihat"):
 
-                st.title("Countplot")
-                st.subheader(categorical_option)
+                if df[categorical_option].dtypes == 'object':
+                    st.write(df[categorical_option].value_counts())
+
+                    # PAIRPLOT
+                    st.title("Pairplot")
+                    fig = sns.pairplot(df, hue=categorical_option)
+                    st.pyplot(fig)
+
+                    # COUNTPLOT
+                    st.title("Countplot")
+                    st.subheader(categorical_option)
+                    fig, ax = plt.subplots()
+                    ax = sns.countplot(data=df, x=categorical_option)
+                    st.pyplot(fig)
+
+                else:
+                    st.write("Kolom yang Anda pilih tidak bertipe Kategorikal")
+
+            st.write("========================================================================")
+
+            st.title("Correlation Map")
+            fig, ax = plt.subplots()
+            ax = sns.heatmap(df.corr(),cmap='coolwarm',annot=True)
+            st.pyplot(fig)
+
+            st.write("========================================================================")
+
+            st.title("Boxplot")
+            st.write("""
+                Salah satu fitur yang dipilih harus bertipe Kategori atau Numerik
+            """)
+            selected_fitur = st.multiselect('Pilih 2 Atribut:', df.columns)
+            if st.button("Tampilkan Bloxplot"):
                 fig, ax = plt.subplots()
-                ax = sns.countplot(data=df, x=categorical_option)
+                # ax = sns.heatmap(df.corr(),cmap='coolwarm',annot=True)
+                ax = sns.boxplot(x=df[selected_fitur[0]],y=df[selected_fitur[1]],data=df,palette='winter')
                 st.pyplot(fig)
-
-
-
-            st.write("==============================================================================")
 
             # else:
             #     st.write("None")
+
+            st.write("========================================================================")
+
+            st.title("Mean")
+            mean_option = st.selectbox('Choose one column:', df.columns)
+            if st.button("Tampilkan Mean"):
+                if df[mean_option].dtypes == 'object':
+                    st.write("""
+                        Anda memilih kolom bertipe Kategorikal, 
+                        silahkan pilih kolom Numerik
+                    """)
+                else:
+                    st.subheader(df[mean_option].mean())
 
     # PREDIKSI
     elif choice == "Prediksi":
