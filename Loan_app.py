@@ -150,8 +150,8 @@ def main():
             
             Pastikan tidak ada data kosong, derau, dan semua data telah siap digunakan sehingga program dapat melakukan prediksi dengan baik.
             * Contoh bentuk data yang dapat Anda gunakan bisa dilihat dibawah:
-                * Contoh data untuk **Menu Eksplorasi** yang dapat Anda gunakan bisa dilihat [di sini](https://github.com/allisonhorst/palmerpenguins)
-                * Contoh data untuk **Menu Prediksi** yang dapat Anda gunakan bisa dilihat [di sini](https://github.com/allisonhorst/palmerpenguins)
+                * Contoh data untuk **Menu Eksplorasi** yang dapat Anda gunakan bisa dilihat [di sini](https://github.com/GigasTaufan/tubes-dti/tree/master/data_menu_eksplorasi)
+                * Contoh data untuk **Menu Prediksi** yang dapat Anda gunakan bisa dilihat [di sini](https://github.com/GigasTaufan/tubes-dti/tree/master/data_menu_prediksi)
         """)
 
     # EKSPLORASI
@@ -161,7 +161,7 @@ def main():
         st.markdown("""
             Anda dapat melakukan eksplorasi terhadap data Anda
             * Pastikan tidak ada data kosong, derau, dan semua data telah siap digunakan sehingga program dapat melakukan prediksi dengan baik.
-            * Contoh bentuk data yang dapat Anda gunakan bisa dilihat [di sini](https://github.com/allisonhorst/palmerpenguins)
+            * Contoh bentuk data yang dapat Anda gunakan bisa dilihat [di sini](https://github.com/GigasTaufan/tubes-dti/tree/master/data_menu_eksplorasi)
         """)
 
         # upload dataset
@@ -266,7 +266,7 @@ def main():
         """)
         st.markdown("""
             * Pastikan tidak ada data kosong, derau, dan semua data telah siap digunakan sehingga program dapat melakukan prediksi dengan baik.
-            * Contoh bentuk data yang dapat Anda gunakan bisa dilihat [di sini](https://github.com/allisonhorst/palmerpenguins)
+            * Contoh bentuk data yang dapat Anda gunakan bisa dilihat [di sini](https://github.com/GigasTaufan/tubes-dti/tree/master/data_menu_prediksi)
         """)
         st.subheader("Upload Dataset")
         st.write("Please upload a CSV file format!")
