@@ -90,44 +90,111 @@ def model_Naive_Bayes(selected_model, X_train, X_test, y_train, y_test):
 
 # Prediksi Data Baru
 
-
 def prediksi_data_baru(model):
     st.title("Prediksi Data Baru")
     st.subheader("**Pilih Nilai-nilai untuk diprediksi**")
+
+    st.text('Jenis Kelamin Pemohon:')
     gender = [0, 1]
-    gender_choice = st.selectbox('Gender', gender)
+    gender_choice = st.selectbox('0: Perempuan; 1: Laki-laki', gender)
+
+    st.write("")
+    st.write("")
+
+    st.text('Apakah Pemohon Telah Menikah?')
     married = [0, 1]
-    married_choice = st.selectbox('Married', married)
-    dependent = [0, 1, 2, 3]
-    dependent_choice = st.selectbox('Dependent', dependent)
+    married_choice = st.selectbox('0: Belum; 1: Sudah Menikah', married)
+
+    st.write("")
+    st.write("")
+
+    # st.text('Jumlah Orang Yang Ditanggung Pemohon:')
+    # dependent = [0, 1, 2, 3, 4, 5]
+    # dependent_choice = st.selectbox('0-5', dependent)
+    dependent_choice = st.number_input('Jumlah Orang Yang Ditanggung Pemohon:')
+
+    st.write("")
+    st.write("")
+
+    st.text('Apakah Pemohon Lulusan Universitas?')
     education = [0, 1]
-    education_choice = st.selectbox('Education', education)
+    education_choice = st.selectbox('0: Tidak; 1: Lulusan Universitas', education)
+
+    st.write("")
+    st.write("")
+
+    st.text('Apakah Pemohon Wiraswasta?')
     self_employee = [0, 1]
-    self_employee_choice = st.selectbox('Self Employee', self_employee)
+    self_employee_choice = st.selectbox('0: Bukan; 1: Wiraswasta', self_employee)
 
-    applicant_income = st.number_input('Insert Applicant Income')
-    coapplicant_income = st.number_input('Inser Coapplicant Income')
-    loan_amount = st.number_input('Input Loan Amount')
-    loan_amount_term = st.number_input('Input Loan Amount Term')
+    st.write("")
+    st.write("")
 
+    applicant_income = st.number_input('Pendapatan Pemohon:')
+    coapplicant_income = st.number_input('Pendapatan Pendamping Pemohon')
+    loan_amount = st.number_input('Jumlah Permintaan Pinjaman Pemohon:')
+    loan_amount_term = st.number_input('Jangka Waktu Pinjaman:')
+
+    st.write("")
+    st.write("")
+
+    st.text('Apakah Pemohon Pernah Melakukan Pinjaman Sebelumnya?')
     credit = [0, 1]
-    credit_choice = st.selectbox('Credit History', credit)
+    credit_choice = st.selectbox('0: Belum; 1: Pernah Pinjam', credit)
 
+    st.write("")
+    st.write("")
+
+    st.text('Area Tempat Tinggal Pemohon:')
     property_area = [0, 1, 2]
-    property_area_choice = st.selectbox(
-        'Property Area', property_area)
+    property_area_choice = st.selectbox('0: Semiurban; 1: Rural; 2: Urban', property_area)
 
-    if st.button("Loan?"):
+    if st.button("Keputusan"):
         st.write(model)
         hasil_prediksi_data_baru = model.predict([[gender_choice, married_choice, dependent_choice, education_choice, self_employee_choice,
                                                    applicant_income, coapplicant_income, loan_amount, loan_amount_term, credit_choice, property_area_choice]])[0]
         st.header(hasil_prediksi_data_baru)
+        if (hasil_prediksi_data_baru == 1):
+            st.title("Berikan Pinjaman")
+        else:
+            st.title("Jangan Berikan Pinjaman")
+
+# def prediksi_data_baru(model):
+#     st.title("Prediksi Data Baru")
+#     st.subheader("**Pilih Nilai-nilai untuk diprediksi**")
+#     gender = [0, 1]
+#     gender_choice = st.selectbox('Gender', gender)
+#     married = [0, 1]
+#     married_choice = st.selectbox('Married', married)
+#     dependent = [0, 1, 2, 3]
+#     dependent_choice = st.selectbox('Dependent', dependent)
+#     education = [0, 1]
+#     education_choice = st.selectbox('Education', education)
+#     self_employee = [0, 1]
+#     self_employee_choice = st.selectbox('Self Employee', self_employee)
+
+#     applicant_income = st.number_input('Insert Applicant Income')
+#     coapplicant_income = st.number_input('Inser Coapplicant Income')
+#     loan_amount = st.number_input('Input Loan Amount')
+#     loan_amount_term = st.number_input('Input Loan Amount Term')
+
+#     credit = [0, 1]
+#     credit_choice = st.selectbox('Credit History', credit)
+
+#     property_area = [0, 1, 2]
+#     property_area_choice = st.selectbox('Property Area', property_area)
+
+#     if st.button("Loan?"):
+#         st.write(model)
+#         hasil_prediksi_data_baru = model.predict([[gender_choice, married_choice, dependent_choice, education_choice, self_employee_choice,
+#                                                    applicant_income, coapplicant_income, loan_amount, loan_amount_term, credit_choice, property_area_choice]])[0]
+#         st.header(hasil_prediksi_data_baru)
 
 
 def main():
 
     # Menu
-    menu = ["Beranda", "Eksplorasi", "Uji Model", "Tentang"]
+    menu = ["Beranda", "Eksplorasi", "Uji Model & Prediksi", "Tentang"]
     choice = st.sidebar.selectbox("Menu", menu)
 
     # Inisialisasi Model
@@ -148,7 +215,8 @@ def main():
 
             **Perhatikan!**
             
-            Pastikan tidak ada data kosong, derau, dan semua data telah siap digunakan sehingga program dapat melakukan prediksi dengan baik.
+            * Pastikan tidak ada data kosong, tidak ada data derau, dan semua data telah siap digunakan
+            * Pastikan perbandingan jumlah kelas tujuan seimbang dan jumlah seluruh data yang digunakan cukup banyak sehingga program dapat melakukan prediksi dengan baik
             * Contoh bentuk data yang dapat Anda gunakan bisa dilihat dibawah:
                 * Contoh data untuk **Menu Eksplorasi** yang dapat Anda gunakan bisa dilihat [di sini](https://github.com/GigasTaufan/tubes-dti/tree/master/data_menu_eksplorasi)
                 * Contoh data untuk **Menu Prediksi** yang dapat Anda gunakan bisa dilihat [di sini](https://github.com/GigasTaufan/tubes-dti/tree/master/data_menu_prediksi)
@@ -157,7 +225,7 @@ def main():
     # EKSPLORASI
     elif choice == "Eksplorasi":
         st.markdown('<style>h1{color: red;}</style>', unsafe_allow_html=True)
-        st.title("Eksplorasi")
+        st.title("Eksplorasi Data")
         st.markdown("""
             Anda dapat melakukan eksplorasi terhadap data Anda
             * Pastikan tidak ada data kosong, derau, dan semua data telah siap digunakan sehingga program dapat melakukan prediksi dengan baik.
@@ -166,6 +234,7 @@ def main():
 
         # upload dataset
         st.subheader("Upload Dataset")
+        st.write("Mohon upload data dalam format CVS!")
         data_file = st.file_uploader("Upload File CSV", type=["csv"])
         if data_file is not None:
 
@@ -178,7 +247,7 @@ def main():
 
             st.subheader("Eksplorasi Data Kategorikal")
             categorical_option = st.selectbox(
-                'Choose categorical column:', df.columns)
+                'Pilih kolom bertipe kategorikal:', df.columns)
             st.write(df[categorical_option].dtypes)
             st.write(df[categorical_option].value_counts())
 
@@ -218,7 +287,7 @@ def main():
             st.write(df.describe())
 
             st.write("Pilih kolom bertipe kategori untuk melihat grouping")
-            group_option = st.selectbox('Choose group column:', df.columns)
+            group_option = st.selectbox('Pilih kolom untuk di kelompokkan:', df.columns)
 
             if st.button("Lihat Describe Group"):
                 if df[group_option].dtypes == 'object':
@@ -245,7 +314,7 @@ def main():
                 "========================================================================")
 
             st.subheader("Mean")
-            mean_option = st.selectbox('Choose one column:', df.columns)
+            mean_option = st.selectbox('Pilih kolom bertipe Numerikal:', df.columns)
             if st.button("Tampilkan Mean"):
                 if df[mean_option].dtypes == 'object':
                     st.write("""
@@ -256,9 +325,9 @@ def main():
                     st.subheader(df[mean_option].mean())
 
     # UJI MODEL
-    elif choice == "Uji Model":
+    elif choice == "Uji Model & Prediksi":
         st.markdown('<style>h1{color: red;}</style>', unsafe_allow_html=True)
-        st.title("Uji Model")
+        st.title("Uji Model & Prediksi")
         st.markdown("""
             Prediksi yang dilakukan berdasarkan dataset yang digunakan saat ini.
 
@@ -266,28 +335,29 @@ def main():
         """)
         st.markdown("""
             * Pastikan tidak ada data kosong, derau, dan semua data telah siap digunakan sehingga program dapat melakukan prediksi dengan baik.
+            * Pastikan perbandingan jumlah kelas tujuan seimbang dan jumlah seluruh data yang digunakan cukup banyak sehingga program dapat melakukan prediksi dengan baik
             * Contoh bentuk data yang dapat Anda gunakan bisa dilihat [di sini](https://github.com/GigasTaufan/tubes-dti/tree/master/data_menu_prediksi)
         """)
         st.subheader("Upload Dataset")
-        st.write("Please upload a CSV file format!")
+        st.write("Mohon upload data dalam format CVS!")
         # upload dataset
         data_file_prediksi = st.file_uploader("Upload File CSV", type=["csv"])
         if data_file_prediksi is not None:
             df_prediksi = pd.read_csv(data_file_prediksi)
             st.dataframe(df_prediksi)
-            selected_y = st.selectbox('Choose Target:', df_prediksi.columns)
+            selected_y = st.selectbox('Pilih Target:', df_prediksi.columns)
 
             y = df_prediksi[selected_y]
             # st.write(y)
             X = df_prediksi.drop(selected_y, axis=1)
 
             sizing = [0.1, 0.2, 0.3]
-            test_size = st.selectbox('Choose Test Size:', sizing)
+            test_size = st.selectbox('Pilih Ukuran Data Test:', sizing)
 
             X_train, X_test, y_train, y_test = train_test_split(
                 X, y, test_size=test_size, random_state=101)
             model = ['Decision Tree', 'Random Forest', 'Naive Bayes']
-            selected_model = st.selectbox('Choose Model', model)
+            selected_model = st.selectbox('Pilih Model Machine Learning:', model)
             # if st.button("Prediksi"):
             if selected_model == 'Decision Tree':
                 # model_Decision_Tree(
