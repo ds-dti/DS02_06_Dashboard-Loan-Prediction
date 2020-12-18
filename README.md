@@ -95,7 +95,7 @@ Pengguna mengunggah data melalui bagian Upload Dataset:
 #### Pilih Model
 
 Pengguna dapat memilih target kelas yang dicari, memilih jumlah data test yang digunakan, dan memilih metode machine learning yang akan dipakai.
-![model](/img/UjiModel_Prediksi/PilihModel.png)
+![model](/img/UjiModel_Prediksi/PilihModel.jpg)
 
 #### Model Report
 
