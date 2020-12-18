@@ -78,12 +78,13 @@ Pengguna dapat melihat deskripsi terkait dataset yang diunggahnya, dan juda dapa
 #### Boxplot
 
 Pengguna dapat melakukan visualisasi boxplot dengan memilih dua kolom yang masing-masing bertipe kategorikal dan numerik.
+
 ![boxplot](/img/Eksplorasi/boxplot.png)
 
 #### Mean
 
 Pengguan dapat melihat rata-rata dari kolom bertipe numerik yang dipilih.
-![boxplot](/img/Eksplorasi/mean.png)
+![mean](/img/Eksplorasi/mean.png)
 
 ### Menu Uji Model & Prediksi
 
