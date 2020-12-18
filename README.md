@@ -39,6 +39,7 @@ Recall : 0.8745084269662922
 ### Akses Website
 
 Akses website pada link berikut: https://tubes-dti-kelompok6.herokuapp.com/
+Tampilan Beranda:
 ![Beranda](/img/beranda.jpeg)
 
 Pada beranda terdapat penjelasan singkat terkait dengan aplikasi dan tatacara penggunaannya
