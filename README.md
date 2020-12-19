@@ -1,44 +1,47 @@
-![Poster](/img/poster.jpeg)
+# Dashboard Loan Prediction
+
+![Poster](/img/posterFinal.jpeg)
 
 Link Video: [Dashboard Loan Prediction](https://youtu.be/ETpeIdcJNuU)
 
-# Dashboard Loan Prediction
+Dashboard Loan Prediction adalah sebuah web application ayng merupakan hasil dari project ahir yang kami selesaikan pada Digital Talent Incubator (DTI) 2020 yang ditujukan untuk membantu permasalahan pemberian bantuan pinjamanan apakah orang yang diberi pinjaman layak untuk mendapatkan bantuan pinjaman.
 
-Deva Hidayat, Gigas Taufan Arvyanto, Rachma Indira
+Berikut adalah anggota dalam project ini:
 
-Dashboard Loan Prediction merupakan sebuah implementasi data science berupa website untuk menemukan solusi permasalahan SDGs nomor 8. Permasalahan ini yaitu membuat regulasi individu atau kelompok mana saja yang dapat diberikan pinjaman. Berikut adalah tools, metode dan dataset yang digunakan:
+- Muhammad Apriandito (Mentor)
+- Deva Hidayat,
+- Gigas Taufan Arvyanto,
+- Rachma Indira
 
-## Dataset
+## Latar Belakang
 
-Dataset yang digunakan merupakan prediksi pinjaman yang didapat dari Kaggle. Berikut adalah link dataset https://www.kaggle.com/ninzaami/loan-predication
+Dilansir dari CNBC Indonesia, menurut Menteri Koordinator Bidang Kemaritiman dan Investasi Luhut Binsar Pandjaitan mengatakan bahwa akses permodalan menjadi tantangan utama bagi pelaku UMKM dalam menjalankan usahanya. Pelaku UMKM masih kesulitan mendapatkan bantuan pinjaman dari badan-badan pemberi pinjaman dari bank maupun koperasi.
 
-## Metode Klasifikasi
+Untuk dapat membantu menyelesaikan permasalahan tersebut kami berinisiatif untuk mengolah data yang terkait dengan pemberian modal yang tersedia dan meluncurkan aplikasi yang dapat membantu badan pemberi pinjaman modal untuk dapat mengambil keputusan yang lebih cepat dalam memberikan bantuan pinjaman kepada pemohon pinjaman.
 
-Metode yang digunakan adalah Gaussian Naive-Bayes, Random Forest, dan Decision Tree. Berikut adalah akurasi dari setiap metode :
+## Konsep Aplikasi
 
-### Gaussian Naive-Bayes :
+Aplikasi adalah sebuah website yang dapat melakukan prediksi apakah seseorang dapat diberikan pinjaman atau tidak. Pengguna aplikasi dapat mengunggah dataset yang dimiliki ke website. Pengguna juga dapat melakukan analisis sederhana terhadap dataset. Terdapat menu Eksplorasi yang berguna untuk melihat visualisasi sederhana terhadap dataset. Lalu untuk melakukan prediksi terdapat pada Menu Uji Model & Prediksi di mana dataset yang diunggah dapat dijadikan model machine learning untuk dapat membantu mengambil keputusan.
 
-Accuracy: 0.7783783783783784
-Precision: 0.7748344370860927
-Recall: 0.9435483870967742
-F1 Score: 0.8509090909090908
-Cohens Kappa Score: 0.43509346838459817
+terdapat 3 model machine learning yang dapat digunakan yakni Naive Bayes, Decision Tree, dan Random Forest.
 
-### Random Forest
+## Tujuan
 
-Accuracy : 0.8
-Recall : 0.9354838709677419
+Pembangunan aplikasi ini guna mendukung usaha dalam mencapai UN Sustainable Development Goals 2030 (SDG) yang ditetapkan oleh PBB. Aplikasi yang dibangun sesuai dengan Goal ke-8: Pekerjaan Layak dan Pertumbuhan Ekonomi. Diharapkan aplikasi yang dibangun dapat membantu dalam usaha mencapai tujuan tersebut sebagai kontribusi data scientist untuk Sustainable Development Goals 2030.
 
-### Decision Tree
+## Pengembangan Lanjut
 
-Accuracy : 0.8698224852071006
-Recall : 0.8745084269662922
+Aplikasi yang dibangun bersifat opensource. Kode dapat digunakan dan dimodifikasi untuk kepentingan lain yang memiliki model permasalahan yang mirip seperti Klasifikasi atau untuk permasalahn lainnya yang membutuhkan data science dan machine learning.
 
 ## Cara Penggunaan Aplikasi Website
 
 ### Akses Website
 
-Akses website pada link berikut: https://tubes-dti-kelompok6.herokuapp.com/
+Akses website pada link berikut:
+
+```bash
+https://tubes-dti-kelompok6.herokuapp.com/
+```
 
 ### Beranda
 
@@ -57,22 +60,27 @@ Dibagian kiri aplikasi terdapat sidebar berupa dropdown yang berisi menu-menu da
 Menu Eksplorasi berguna untuk menampilkan visualisasi sederhana dari data yang diunggah. Visualisasi seperti correlation heatmap, boxplot, pairplot, serta countplot tersedia.
 
 Pengguna mengunggah data melalui bagian Upload Dataset:
+
 ![EksplorasiUpload](/img/Eksplorasi/eksplorasi_upload_file.png)
 
 #### Pairplot dan Countplot
 
 Pengguna dapat memilih kolom bertipe kategorikal atau object pada dropdown yang disediakan. Untuk dapat melihat visualisasi pairplot yang dipisahkan berdasarkan kolom yang dipilih:
+
 ![EksplorasiDataKategorikal](/img/Eksplorasi/eksplorasi_data_kategorikal.png)
 
 #### Correlation Table
 
 Berikut adalah correlation table dan heatmap dari dataset:
+
 ![Correlation](/img/Eksplorasi/correlation_map.png)
 
 #### Describe Dataset
 
 Pengguna dapat melihat deskripsi terkait dataset yang diunggahnya, dan juda dapat memilih satu kolom untuk melihat deskripsi data yang digrouping berdasarkan kolom yang dipilih:
+
 ![Describe1](/img/Eksplorasi/Desckripsi_dataset.png)
+
 ![Describe2](/img/Eksplorasi/Desckripsi_visualisasi.png)
 
 #### Boxplot
@@ -84,6 +92,7 @@ Pengguna dapat melakukan visualisasi boxplot dengan memilih dua kolom yang masin
 #### Mean
 
 Pengguan dapat melihat rata-rata dari kolom bertipe numerik yang dipilih.
+
 ![mean](/img/Eksplorasi/mean.png)
 
 ### Menu Uji Model & Prediksi
@@ -91,11 +100,13 @@ Pengguan dapat melihat rata-rata dari kolom bertipe numerik yang dipilih.
 Menu Uji Prediksi & Prediksi berguna untuk melakukan pengujian metode machine learning yang akan digunakan untuk klasifikasi.
 
 Pengguna mengunggah data melalui bagian Upload Dataset:
+
 ![ModelUpload](/img/UjiModel_Prediksi/upload.png)
 
 #### Pilih Model
 
 Pengguna dapat memilih target kelas yang dicari, memilih jumlah data test yang digunakan, dan memilih metode machine learning yang akan dipakai.
+
 ![model](/img/UjiModel_Prediksi/PilihModel.jpg)
 
 #### Model Report
@@ -109,5 +120,7 @@ Setelah pengguna memilih target kelas, data test, dan metode maka akan dibawahny
 Pengguna dapat melakukan prediksi data baru dari model yang dibangun dengan memasukkan nilai-nilai pada atribut yang digunakan. Hasil keputusan akan ditampilkan setelah pengguna mengklik tombol "Keputusan".
 
 ![prediksi](/img/UjiModel_Prediksi/prediksi.png)
+
 ![prediksi](/img/UjiModel_Prediksi/prediksi1.png)
+
 ![prediksi](/img/UjiModel_Prediksi/prediksi2.png)
